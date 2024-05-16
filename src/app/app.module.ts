@@ -7,7 +7,7 @@ import { ClientComponent } from './Pages/client/client.component';
 import { AddClientComponent } from './clients/add-client/add-client.component';
 import { EditClientComponent } from './clients/edit-client/edit-client.component';
 import { ListClientsComponent } from './clients/list-clients/list-clients.component';
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 
 const routes: Routes = [
@@ -18,6 +18,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
+    
     AppComponent,
     ClientComponent,
     AddClientComponent,
@@ -25,10 +26,11 @@ const routes: Routes = [
     ListClientsComponent
   ],
   imports: [
-    
+    RouterModule.forRoot(routes),
     BrowserModule,
-    AppRoutingModule
-  ],
+    AppRoutingModule,
+    
+  ],exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent]
 })
