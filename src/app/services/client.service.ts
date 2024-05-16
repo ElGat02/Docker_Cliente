@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, catchError } from 'rxjs';
 import { Client } from '../Model/Client.model';
 
 
@@ -21,8 +21,18 @@ export class ClientService {
   }
 
   addClient(client: Client): Observable<Client> {
-    return this.http.post<Client>(this.apiUrl, client);
+    return this.http.post<Client>(this.apiUrl, client, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    }).pipe(
+      catchError(error => {
+        console.error('Error al añadir cliente', error);
+        throw error;
+      })
+    );
   }
+
 
   updateClient(client: Client): Observable<Client> {
     return this.http.put<Client>(`${this.apiUrl}/${client.id}`, client);
