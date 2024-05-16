@@ -1,1 +1,7 @@
-<p>add-client works!</p>
+<form (ngSubmit)="addClient()">
+    <input type="text" [(ngModel)]="client.name" name="name" placeholder="Nombre" required>
+    <input type="email" [(ngModel)]="client.email" name="email" placeholder="Email" required>
+    <input type="text" [(ngModel)]="client.phone" name="phone" placeholder="Teléfono" required>
+    <button type="submit">Agregar Cliente</button>
+  </form>
+  

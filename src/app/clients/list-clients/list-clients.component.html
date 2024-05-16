@@ -1,1 +1,25 @@
-<p>list-clients works!</p>
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let client of clients">
+        <td>{{ client.id }}</td>
+        <td>{{ client.name }}</td>
+        <td>{{ client.email }}</td>
+        <td>{{ client.phone }}</td>
+        <td>
+          <button (click)="editClient(client.id)">Editar</button>
+          <button (click)="deleteClient(client.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button routerLink="/add-client">Agregar Cliente</button>
+  
